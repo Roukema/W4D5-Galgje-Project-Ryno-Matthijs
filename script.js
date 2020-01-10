@@ -1,4 +1,5 @@
 // Initialize ALL global variables here
+let getInput = document.querySelector("input");
 let maxAmount = 5;
 let word;
 let inputsArray = "";
@@ -21,7 +22,6 @@ const wordPicker = function(list) {
   const x = list;
   return x[index];
 };
-
 
 const wordGuessed = function(word, inputsArray) {
   // remove all letters from word that are already guessed
@@ -78,6 +78,8 @@ const showWord = function(word, inputLetterWords) {
 };
 
 const guessLetter = function(input) {
+
+  getInput.value = "";
   if (gameOver) {
     return;
   }
@@ -130,5 +132,15 @@ document.querySelector("input").value = "";
   beginTheGameWithPlayer();
 });
 
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector(".guess").addEventListener("click", function() {
+    guessLetter(getInput.value);
+  });
+  document
+    .querySelector(".restart")
+    .addEventListener("click", beginTheGameWithPlayer);
+  beginTheGameWithPlayer();
+});
 
 module.exports = {guessLetter};
