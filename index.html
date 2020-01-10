@@ -8,8 +8,11 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <h1>Simple 'Hangman' Game</h1>
-    <p>[no people will actually be harmed during this game]</p>
+    <div class="header">
+      <h1>Simple 'Hangman' Game</h1>
+      <p>[no people will actually be harmed during this game]</p>
+    </div>
+  
 
     <div class="win">
       <h2>You won!</h2>
@@ -21,10 +24,11 @@
       <img src="lose.gif" />
       <p>The chosen word was: <span></span></p>
     </div>
+    <div class="Guess-Restart">    <input type="text" placeholder="Guess a letter" maxlength="1" />
+      <button class="guess">Guess</button>
+      <button class="restart">Restart</button>
+    </div>
 
-    <input type="text" placeholder="Guess a letter" maxlength="1" />
-    <button class="guess">Guess</button>
-    <button class="restart">Restart</button>
     <h2>Current word:</h2>
     <div class="the_word">_ _ _ _ _</div>
     <h3>Incorrectly guessed letters:</h3>

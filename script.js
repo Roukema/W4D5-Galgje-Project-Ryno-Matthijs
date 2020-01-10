@@ -1,5 +1,6 @@
 let getInput = document.querySelector("input");
 // Initialize ALL global variables here
+let getInput = document.querySelector("input");
 let maxAmount = 5;
 let word;
 let inputsArray = "";
@@ -131,4 +132,6 @@ document.addEventListener("DOMContentLoaded", function() {
   beginTheGameWithPlayer();
 });
 
+
 module.exports = { guessLetter, wordPicker, showWord, wordToDom };
+
