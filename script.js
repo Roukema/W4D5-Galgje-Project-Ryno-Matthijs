@@ -1,9 +1,11 @@
+let getInput = document.querySelector("input");
 // Initialize ALL global variables here
 let maxAmount = 5;
 let word;
 let inputsArray = "";
 let gameOver;
 let tries = 0;
+
 // This code here selects a random word
 const wordList = [
   "vis",
@@ -15,13 +17,11 @@ const wordList = [
   "geeuw"
 ];
 
-
 const wordPicker = function(list) {
   let index = Math.floor(Math.random() * list.length);
   const x = list;
   return x[index];
 };
-
 
 const wordGuessed = function(word, inputsArray) {
   // remove all letters from word that are already guessed
@@ -38,7 +38,6 @@ const wordGuessed = function(word, inputsArray) {
 //   document.querySelector("input").value = "";
 // };
 
-
 const winTheGame = function() {
   document.querySelector(".win").style.display = "block";
   gameOver = true;
@@ -52,7 +51,6 @@ const loseTheGame = function() {
 const rightAnswerIs = function(word) {
   document.querySelector(".lose p span").innerHTML = `"${word.join("")}"`;
 };
-
 
 const updateTriesDisplay = function(tries) {
   document.querySelector(".lives span").innerHTML = 5 - tries;
@@ -74,14 +72,17 @@ const showWord = function(word, inputLetterWords) {
       return "_";
     }
   });
-  document.querySelector(".the_word").innerHTML = display.join(" ");
+  wordToDom(display);
 };
+const wordToDom = display =>
+  (document.querySelector(".the_word").innerHTML = display.join(" "));
 
 const guessLetter = function(input) {
+  getInput.value = "";
   if (gameOver) {
     return;
   }
-  
+
   if (inputsArray.includes(input) || input === "") {
     return;
   }
@@ -121,14 +122,13 @@ const beginTheGameWithPlayer = function() {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
-  const input = document.querySelector("input").value;
-document.querySelector("input").value = "";
-  document.querySelector(".guess").addEventListener("click", guessLetter(input));
+  document.querySelector(".guess").addEventListener("click", function() {
+    guessLetter(getInput.value);
+  });
   document
     .querySelector(".restart")
     .addEventListener("click", beginTheGameWithPlayer);
   beginTheGameWithPlayer();
 });
 
-
-module.exports = {guessLetter};
+module.exports = { guessLetter, wordPicker, showWord, wordToDom };
