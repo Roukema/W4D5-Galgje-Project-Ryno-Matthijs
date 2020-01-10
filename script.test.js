@@ -9,7 +9,8 @@ test("Generate a word", function() {
 test("checks if word includes letter and gives back letter", function() {
   word = ["t", "e", "s", "t"];
   letters = ["e", "s", "l"];
-  output = showWord(word, letters);
+  wordToDom = jest.fn(showWord(word, letters));
+  // output = showWord(word, letters);
 
   expect(wordToDom).toBeCalledWith(["e", "s"]);
 });
