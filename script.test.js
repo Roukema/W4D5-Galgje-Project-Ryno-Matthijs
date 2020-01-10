@@ -1,3 +1,22 @@
+
+const { guessLetter, wordPicker, showWord, wordToDom } = require("./script.js");
+
+test("Generate a word", function() {
+  list = ["ryno", "matthijs"];
+  output = wordPicker(list);
+  expect(output).toEqual(expect.any(String));
+});
+
+test("checks if word includes letter and gives back letter", function() {
+  word = ["t", "e", "s", "t"];
+  letters = ["e", "s", "l"];
+  wordToDom = jest.fn(showWord(word, letters));
+  // output = showWord(word, letters);
+
+  expect(wordToDom).toBeCalledWith(["e", "s"]);
+});
+
+
 const {guessLetter} = require('./script.js');
 test("when tries=5 the game should stop", function(){
   // const input = ["a", "p"]; 
